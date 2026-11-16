@@ -1,0 +1,180 @@
+{
+  "raw_episodes": {
+    "path": "/home/lightonray/robot_ai/episodes/right_cube_30hz/episodes",
+    "count": 60,
+    "bytes": 3916482176
+  },
+  "export": {
+    "path": "/home/lightonray/robot_ai/episodes/right_cube_30hz/exports/ccf6d66fb41b4a11a30a459426888864",
+    "bytes": 127220009,
+    "info": {
+      "codebase_version": "v3.0",
+      "fps": 30,
+      "features": {
+        "observation.state": {
+          "dtype": "float32",
+          "shape": [
+            8
+          ],
+          "names": [
+            "right_joint1",
+            "right_joint2",
+            "right_joint3",
+            "right_joint4",
+            "right_joint5",
+            "right_joint6",
+            "right_joint7",
+            "right_gripper"
+          ]
+        },
+        "action": {
+          "dtype": "float32",
+          "shape": [
+            8
+          ],
+          "names": [
+            "right_joint1",
+            "right_joint2",
+            "right_joint3",
+            "right_joint4",
+            "right_joint5",
+            "right_joint6",
+            "right_joint7",
+            "right_gripper"
+          ]
+        },
+        "observation.images.main": {
+          "dtype": "video",
+          "shape": [
+            480,
+            640,
+            3
+          ],
+          "names": [
+            "height",
+            "width",
+            "channels"
+          ],
+          "info": {
+            "video.height": 480,
+            "video.width": 640,
+            "video.codec": "h264",
+            "video.pix_fmt": "yuv420p",
+            "video.is_depth_map": false,
+            "video.fps": 30,
+            "video.channels": 3,
+            "has_audio": false
+          }
+        },
+        "observation.images.right": {
+          "dtype": "video",
+          "shape": [
+            480,
+            640,
+            3
+          ],
+          "names": [
+            "height",
+            "width",
+            "channels"
+          ],
+          "info": {
+            "video.height": 480,
+            "video.width": 640,
+            "video.codec": "h264",
+            "video.pix_fmt": "yuv420p",
+            "video.is_depth_map": false,
+            "video.fps": 30,
+            "video.channels": 3,
+            "has_audio": false
+          }
+        },
+        "timestamp": {
+          "dtype": "float32",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "frame_index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "episode_index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        },
+        "task_index": {
+          "dtype": "int64",
+          "shape": [
+            1
+          ],
+          "names": null
+        }
+      },
+      "total_episodes": 60,
+      "total_frames": 39229,
+      "total_tasks": 1,
+      "chunks_size": 1000,
+      "data_files_size_in_mb": 100,
+      "video_files_size_in_mb": 200,
+      "data_path": "data/chunk-{chunk_index:03d}/file-{file_index:03d}.parquet",
+      "video_path": "videos/{video_key}/chunk-{chunk_index:03d}/file-{file_index:03d}.mp4",
+      "robot_type": "openarm_v1_right",
+      "splits": {
+        "train": "0:60"
+      }
+    }
+  },
+  "checkpoint": {
+    "path": "/home/lightonray/robot_ai/models/smolvla_cube_20k",
+    "bytes": 906740812,
+    "sha256": {
+      "config.json": "e21a6904ecc93301917f051efc53f518ee21692604c649b033633f7dcb5c2cd4",
+      "train_config.json": "1213aaa7658d7b68cc3ee06e749d36eae0d22708d9edebe1c0fda11ef164590e",
+      "model.safetensors": "bd6df9752cee58950614a2109f1fd4e1f1ed2ea4b091ffb31ad99d2aa42fb1f5",
+      "policy_postprocessor_step_0_unnormalizer_processor.safetensors": "778b61776e7da78489a90177a6705a64fbc43749626b202b0a0f528a1499172b",
+      "policy_preprocessor.json": "3bb4850936462a1124ef06994fbe645236a16e77d21288be54590f5835478f5f",
+      "policy_postprocessor.json": "f24875ca8641ab68c5aa70b8785537222e2bea90d4a43365a0b9dc0a64cbe6dc",
+      "policy_preprocessor_step_5_normalizer_processor.safetensors": "778b61776e7da78489a90177a6705a64fbc43749626b202b0a0f528a1499172b"
+    }
+  },
+  "local_lerobot_commit": "d656da8ccca5989ff0a2207e81fbfa2c2d5bafb1",
+  "workstation_lerobot_commit": "cec8ee0be6e1006f9ecbd829fea59d051a11c515",
+  "training_wrapper": {
+    "path": "scripts/train_cube.py",
+    "sha256": "329984e9af78829461cb4aa0dc5a132ef4e1ffc96e67d83575cb33c7366f713b",
+    "local_self_test": "blocked by LeRobot API mismatch: EpisodeAwareSampler does not accept seed",
+    "modified_after_download": false
+  },
+  "workstation_lerobot_version": "0.5.2",
+  "workstation_lerobot_provenance": {
+    "source": "user-provided workstation command output, captured after training",
+    "location": "/media/ext4-data/share/rei/lerobot/src/lerobot/__init__.py",
+    "tracked_changes": false,
+    "untracked_files": [
+      "sitecustomize.py",
+      "test_libero_render.py"
+    ],
+    "training_revision_condition": "checkout unchanged since training",
+    "untracked_file_contents_verified": false,
+    "sitecustomize_check": {
+      "loaded": false,
+      "scope": "user-reported Python session in conda lerobot from home directory after training",
+      "training_time_loading_verified": false
+    }
+  }
+}
