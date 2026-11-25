@@ -1,0 +1,57 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never cancel mid-deploy: the site would be served half-written.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Pin the generator so CI matches the tested documentation build.
+      - name: Install doxygen
+        env:
+          DOXYGEN_VERSION: 1.16.1
+        run: |
+          url="https://github.com/doxygen/doxygen/releases/download"
+          curl -fsSL -o /tmp/doxygen.tar.gz \
+            "$url/Release_${DOXYGEN_VERSION//./_}/doxygen-${DOXYGEN_VERSION}.linux.bin.tar.gz"
+          mkdir -p /tmp/doxygen && tar -xzf /tmp/doxygen.tar.gz -C /tmp/doxygen
+          echo "DOXYGEN=/tmp/doxygen/doxygen-${DOXYGEN_VERSION}/bin/doxygen" >> "$GITHUB_ENV"
+
+      # Documentation builds without ROS, CUDA or model dependencies.
+      - name: Build documentation
+        run: |
+          cmake -S docs -B build/docs -DDOXYGEN_EXECUTABLE="$DOXYGEN"
+          cmake --build build/docs
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/docs/site/html
+
+  deploy:
+    # Pull requests build the docs as a check but must not publish them.
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

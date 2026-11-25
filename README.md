@@ -64,8 +64,8 @@ Details and source configurations:
 - [Training settings and base model](docs/reference-experiment.md#training-record)
 - [One-arm adaptations and sampling fix](docs/reference-experiment.md#adaptations-for-this-robot)
 - [Data transformations and repository separation](docs/reference-experiment.md#data-transformations-and-repository-separation)
-- [Saved model configuration](configs/config.json), [training configuration](configs/train_config.json)
-  and [training/validation split](configs/split.json)
+- [Saved model configuration](https://github.com/secorolab/openarm-smolvla/blob/main/configs/config.json), [training configuration](https://github.com/secorolab/openarm-smolvla/blob/main/configs/train_config.json)
+  and [training/validation split](https://github.com/secorolab/openarm-smolvla/blob/main/configs/split.json)
 - [Tested dependency versions](#tested-dependency-versions)
 
 ## Related repositories and dependencies
@@ -434,3 +434,9 @@ Training-environment values were captured after training; they describe that run
 provided the environment was not subsequently changed. Inference package versions
 were checked again on 2026-11-25. These are tested configurations, not a requirement
 to use separate computers.
+
+## Documentation website
+
+See [Build and publish the documentation](docs/documentation.md) for local preview
+and GitHub Pages setup. The website is generated from this README, the guides and
+the C++ headers; no robot or model dependencies are needed to build it.

@@ -24,13 +24,13 @@ JSON files and normalization tensors; these must stay together for inference.
 Fine-tuned `lerobot/smolvla_base` snapshot
 `5e8d12a6e2975b0e5e5fce7c8caf47c371d257b6`, with backbone
 `HuggingFaceTB/SmolVLM2-500M-Video-Instruct`. This was fine-tuning, not training from
-scratch. Saved original configurations are [model configuration](../configs/config.json) and
-[training configuration](../configs/train_config.json); absolute paths in these archived files describe the
+scratch. Saved original configurations are [model configuration](https://github.com/secorolab/openarm-smolvla/blob/main/configs/config.json) and
+[training configuration](https://github.com/secorolab/openarm-smolvla/blob/main/configs/train_config.json); absolute paths in these archived files describe the
 original experiment and should be adapted for a new run.
 
 - 20,000 updates, batch size 8, seed 42; four data-loading workers.
 - 54 training episodes (35,424 frames), six validation episodes:
-  11, 16, 20, 23, 38, 54. See [episode split](../configs/split.json).
+  11, 16, 20, 23, 38, 54. See [episode split](https://github.com/secorolab/openarm-smolvla/blob/main/configs/split.json).
 - AdamW, peak learning rate 0.0001, gradient clipping 10; cosine schedule.
   Saved schedule specifies warm-up 1,000 and decay 30,000; the training log reported
   rescaling to warm-up 666 and decay 20,000 for this run.
@@ -51,7 +51,7 @@ original experiment and should be adapted for a new run.
   the training set. The training wrapper corrects filtered row indices
   and preserves episode boundaries for action chunks. Synthetic and dataset checks
   passed before the recorded training run. The original wrapper is now saved as
-  [training wrapper](../scripts/train_cube.py). Use the recorded training LeRobot commit for this wrapper:
+  [training wrapper](https://github.com/secorolab/openarm-smolvla/blob/main/scripts/train_cube.py). Use the recorded training LeRobot commit for this wrapper:
   the recorded inference commit has an older sampler that does not accept its
   `seed` argument. This sampler is not used during policy inference.
 
@@ -63,7 +63,7 @@ For the two recorded software configurations, use separate Python environments a
 LeRobot checkouts so their dependencies do not overwrite each other.
 
 For training reproduction, use the fine-tuning commit listed in the README and
-[training wrapper](../scripts/train_cube.py). For inference, use the tested inference configuration in the README.
+[training wrapper](https://github.com/secorolab/openarm-smolvla/blob/main/scripts/train_cube.py). For inference, use the tested inference configuration in the README.
 Transfer the complete checkpoint directory only when using a different computer;
 on one computer, point inference directly at the saved checkpoint.
 
